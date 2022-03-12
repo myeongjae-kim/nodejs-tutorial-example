@@ -1,0 +1,19 @@
+{
+  "name": "nodejs-tutorial-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/myeongjae-kim/nodejs-tutorial-example.git"
+  },
+  "author": "Myeongjae Kim",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/myeongjae-kim/nodejs-tutorial-example/issues"
+  },
+  "homepage": "https://github.com/myeongjae-kim/nodejs-tutorial-example#readme"
+}
