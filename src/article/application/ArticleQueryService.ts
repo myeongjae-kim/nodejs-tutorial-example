@@ -1,6 +1,6 @@
-import { Article } from "../domain/Article";
 import { ArticleGetUseCase } from "./port/incoming/ArticleGetUseCase";
 import { ArticleListUseCase } from "./port/incoming/ArticleListUseCase";
+import { ArticleResponseDto, from } from "./port/incoming/ArticleResponseDto";
 import { ArticleLoadPort } from "./port/outgoing/ArticleLoadPort";
 
 export class ArticleQueryService
@@ -8,14 +8,15 @@ export class ArticleQueryService
 {
   constructor(private articleLoadPort: ArticleLoadPort) {}
 
-  public get = (id: number): Article => {
+  public get = (id: number): ArticleResponseDto => {
     const article = this.articleLoadPort.findById(id);
     if (article === undefined) {
       throw new Error("error.article.not-found");
     }
 
-    return article;
+    return from(article);
   };
 
-  public findAll = (): Article[] => this.articleLoadPort.findAll();
+  public findAll = (): ArticleResponseDto[] =>
+    this.articleLoadPort.findAll().map(from);
 }

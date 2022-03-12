@@ -32,7 +32,9 @@ describe("applicationContextIntegrationTest", () => {
     const actual = context.articleGetUseCase.get(id);
 
     // then
-    expect(actual).toMatchObject(article);
+    expect(actual.id).toBe(article.id);
+    expect(actual.title).toBe(article.title);
+    expect(actual.content).toBe(article.content);
   });
 
   test("articleListUseCase", () => {
@@ -46,6 +48,9 @@ describe("applicationContextIntegrationTest", () => {
     const actual = context.articleListUseCase.findAll();
 
     // then
-    expect(actual).toMatchObject([article]);
+    expect(actual).toHaveLength(1);
+    expect(actual[0].id).toBe(article.id);
+    expect(actual[0].title).toBe(article.title);
+    expect(actual[0].content).toBe(article.content);
   });
 });

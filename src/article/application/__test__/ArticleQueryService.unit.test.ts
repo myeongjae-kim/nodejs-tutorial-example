@@ -20,7 +20,9 @@ describe("ArticleQueryServiceTest", () => {
   test("get", () => {
     const actual = articleQueryService.get(1);
 
-    expect(actual).toBe(article);
+    expect(actual.id).toBe(article.id);
+    expect(actual.title).toBe(article.title);
+    expect(actual.content).toBe(article.content);
   });
 
   test("get_nonExistentId_error", () => {
@@ -33,6 +35,9 @@ describe("ArticleQueryServiceTest", () => {
   test("findAll", () => {
     const actual = articleQueryService.findAll();
 
-    expect(actual).toMatchObject([article]);
+    expect(actual).toHaveLength(1);
+    expect(actual[0].id).toBe(article.id);
+    expect(actual[0].title).toBe(article.title);
+    expect(actual[0].content).toBe(article.content);
   });
 });
