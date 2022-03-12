@@ -4,4 +4,5 @@ export class Constants {
   }
 
   public static LINE_BREAK = "\n";
+  public static GO_BACK_COMMAND = "x";
 }
