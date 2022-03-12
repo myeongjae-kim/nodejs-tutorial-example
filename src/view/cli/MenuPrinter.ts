@@ -33,8 +33,7 @@ x) 종료${this.printSelect()}`;
 
   public printArticleSaved = (id: number): string =>
     Constants.LINE_BREAK +
-    "게시글을 저장했습니다. id: " +
-    id +
+    ArticlePrinter.instance.printSaved(id) +
     this.printEnterKeyToGoBack();
 
   // 아래는 private도 가능할 것 같은데?
