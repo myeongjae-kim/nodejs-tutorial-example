@@ -9,7 +9,7 @@
     "start": "node .",
     "test": "jest",
     "report": "jest unit --collect-coverage && open coverage/lcov-report/index.html",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint": "eslint . --ext .ts,.tsx",
     "prettier": "prettier --write .",
     "clean": "rm -rf dist/*"
   },
