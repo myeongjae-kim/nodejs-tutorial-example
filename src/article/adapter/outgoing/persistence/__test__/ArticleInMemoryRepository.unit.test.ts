@@ -34,6 +34,10 @@ describe("ArticleInMemoryRepositoryTest", () => {
     expect(entity).not.toBeUndefined();
   });
 
+  test("findById_nonExistentId_undefined", () => {
+    expect(repository.findById(999)).toBeUndefined();
+  });
+
   test("findAll", () => {
     // given
     records[1] = ArticleFixture.create(1);

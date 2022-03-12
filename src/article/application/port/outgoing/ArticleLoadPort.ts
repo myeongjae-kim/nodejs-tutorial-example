@@ -1,6 +1,6 @@
 import { ArticleImpl } from "../../../domain/ArticleImpl";
 
 export interface ArticleLoadPort {
-  findAll(): ArticleImpl;
+  findAll(): ArticleImpl[];
   findById(id: number): ArticleImpl | undefined;
 }
