@@ -12,7 +12,7 @@ x) 종료${this.printSelect()}`;
 
   public printArticleList = (articles: ArticleResponseDto[]): string =>
     this.articlePrinter.printForList(...articles) +
-    Constants.LINE_BREAK +
+    (articles.length > 0 ? Constants.LINE_BREAK : "") +
     this.printGoBack() +
     this.printSelect();
 
