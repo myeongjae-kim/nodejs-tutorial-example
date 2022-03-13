@@ -1,3 +1,4 @@
+import { ActionFromReducer, createStore, Store } from "@reduxjs/toolkit";
 import readline from "readline";
 import { ArticleInMemoryRepository } from "./article/adapter/outgoing/persistence/ArticleInMemoryRepository";
 import { ArticlePersistenceAdapter } from "./article/adapter/outgoing/persistence/ArticlePersistenceAdapter";
@@ -7,10 +8,11 @@ import { ArticleCreateUseCase } from "./article/application/port/incoming/Articl
 import { ArticleGetUseCase } from "./article/application/port/incoming/ArticleGetUseCase";
 import { ArticleListUseCase } from "./article/application/port/incoming/ArticleListUseCase";
 import { ArticleImpl } from "./article/domain/ArticleImpl";
-import { StateManager } from "./view/cli/state-modules/vanila/StateManager";
+import { ArticlePrinter } from "./article/view/cli/ArticlePrinter";
 import { CliInOut } from "./view/cli/CliInOut";
 import { MenuPrinter } from "./view/cli/MenuPrinter";
-import { ArticlePrinter } from "./article/view/cli/ArticlePrinter";
+import * as reduxModule from "./view/cli/state-modules/redux/redux-module";
+import { StateManager } from "./view/cli/state-modules/vanila/StateManager";
 
 export interface ApplicationContext {
   articleGetUseCase: ArticleGetUseCase;
@@ -18,6 +20,11 @@ export interface ApplicationContext {
   articleCreateUseCase: ArticleCreateUseCase;
   menuPrinter: MenuPrinter;
   stateManager: StateManager;
+  store: Store<
+    reduxModule.State,
+    ActionFromReducer<typeof reduxModule.reducer>
+  >;
+
   cliInOut: CliInOut;
 }
 
@@ -46,6 +53,7 @@ export const createApplicationContext = (
 
     menuPrinter: new MenuPrinter(new ArticlePrinter()),
     stateManager: new StateManager(),
+    store: createStore(reduxModule.reducer),
 
     cliInOut: new CliInOut(
       readline.createInterface({

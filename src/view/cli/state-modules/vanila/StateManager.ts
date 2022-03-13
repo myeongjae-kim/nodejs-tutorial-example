@@ -1,5 +1,5 @@
 import { Constants } from "../../../../Constants";
-import { createInitialState, State } from "../types/State";
+import { createInitialState, State } from "../State";
 
 export class StateManager {
   constructor(private state: State = createInitialState()) {}

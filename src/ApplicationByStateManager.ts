@@ -6,7 +6,7 @@ import { CliInOut } from "./view/cli/CliInOut";
 import { MenuPrinter } from "./view/cli/MenuPrinter";
 import { StateManager } from "./view/cli/state-modules/vanila/StateManager";
 
-export class StateManagerApplication {
+export class ApplicationByStateManager {
   constructor(
     private cliInOut: CliInOut,
     private stateManager: StateManager,
