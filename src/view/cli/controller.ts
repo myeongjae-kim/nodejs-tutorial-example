@@ -4,20 +4,9 @@ import { Constants } from "../../Constants";
 import { ArticleListUseCase } from "../../article/application/port/incoming/ArticleListUseCase";
 import { ArticleGetUseCase } from "../../article/application/port/incoming/ArticleGetUseCase";
 import { ArticleCreateUseCase } from "../../article/application/port/incoming/ArticleCreateUseCase";
+import { getState, setState } from "./state-modules/state-module-vanila";
 
-// TODO: 아래 내용을 좀 더 간결하게 써보자.. 고전적인 유한 상태 머신 패턴인데 좋은 방법 없나.
-// xstate.js 써보자
-type State =
-  | "HOME"
-  | "ARTICLE_LIST"
-  | "ARTICLE_DETAIL"
-  | "ARTICLE_FORM"
-  | "EXIT";
-let state: State = "HOME";
-let selectedArticleId = -1;
-
-export const getState = (): State => state;
-
+console.clear();
 const menuPrinter = MenuPrinter.instance;
 const rl = readline.createInterface({
   input: process.stdin,
@@ -49,13 +38,13 @@ export async function home() {
 
   switch (answer) {
     case "1":
-      state = "ARTICLE_LIST";
+      setState({ view: "ARTICLE_LIST" });
       break;
     case "2":
-      state = "ARTICLE_FORM";
+      setState({ view: "ARTICLE_FORM" });
       break;
     case "x":
-      state = "EXIT";
+      setState({ view: "EXIT" });
       break;
   }
 }
@@ -75,21 +64,19 @@ export async function articleList(articleListUseCase: ArticleListUseCase) {
 
   switch (answer) {
     case Constants.GO_BACK_COMMAND:
-      state = "HOME";
+      setState({ view: "HOME" });
       break;
     default:
-      state = "ARTICLE_DETAIL";
-      selectedArticleId = parseInt(answer);
+      setState({ view: "ARTICLE_DETAIL", selectedArticleId: parseInt(answer) });
       break;
   }
 }
 
 export async function articleDetail(articleGetUseCase: ArticleGetUseCase) {
-  const article = articleGetUseCase.get(selectedArticleId);
+  const article = articleGetUseCase.get(getState().selectedArticleId);
   await printAndGet(menuPrinter.printArticleDetail(article));
 
-  state = "ARTICLE_LIST";
-  selectedArticleId = -1;
+  setState({ view: "ARTICLE_LIST", selectedArticleId: -1 });
 }
 
 export async function articleCreate(
@@ -105,6 +92,5 @@ export async function articleCreate(
 
   await printAndGet(menuPrinter.printArticleSaved(id));
 
-  state = "HOME";
-  selectedArticleId = -1;
+  setState({ view: "HOME", selectedArticleId: -1 });
 }

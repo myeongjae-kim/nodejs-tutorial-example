@@ -3,16 +3,15 @@ import {
   articleCreate,
   articleDetail,
   articleList,
-  getState,
   home,
-} from "./view/cli/finite-state-machine";
+} from "./view/cli/controller";
+import { getState } from "./view/cli/state-modules/state-module-vanila";
 
 (async () => {
-  console.clear();
   const context = createApplicationContext();
 
   for (;;) {
-    switch (getState()) {
+    switch (getState().view) {
       case "HOME":
         await home();
         break;
