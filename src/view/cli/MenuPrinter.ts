@@ -24,16 +24,16 @@ x) 종료${this.printSelect()}`;
     this.articlePrinter.printSaved(id) +
     this.printEnterKeyToGoBack();
 
-  // 아래는 private도 가능할 것 같은데?
-  public printGoBack = (): string => Constants.GO_BACK_COMMAND + ") 뒤로가기";
-  public printSelect = (): string =>
-    Constants.LINE_BREAK + Constants.LINE_BREAK + "선택: ";
-  public printEnterKeyToGoBack = (): string =>
-    Constants.LINE_BREAK +
-    Constants.LINE_BREAK +
-    "엔터 키를 누르면 이전 화면으로 되돌아갑니다.";
   public printWrongInput = (): string =>
     "입력이 올바르지 않습니다. 아래 선택지의 맨 앞 숫자를 입력해주세요." +
     Constants.LINE_BREAK +
     Constants.LINE_BREAK;
+
+  private printGoBack = (): string => Constants.GO_BACK_COMMAND + ") 뒤로가기";
+  private printSelect = (): string =>
+    Constants.LINE_BREAK + Constants.LINE_BREAK + "선택: ";
+  private printEnterKeyToGoBack = (): string =>
+    Constants.LINE_BREAK +
+    Constants.LINE_BREAK +
+    "엔터 키를 누르면 이전 화면으로 되돌아갑니다.";
 }

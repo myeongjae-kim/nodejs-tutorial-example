@@ -1,16 +1,51 @@
+import { ArticleResponseDtoFixture } from "../../../article/application/port/incoming/__test__/ArticleResponseDtoFixture";
 import { ArticlePrinter } from "../../../article/view/cli/ArticlePrinter";
 import { MenuPrinter } from "../MenuPrinter";
 
 describe("MenuPrinterTest", () => {
-  test("printStrings", () => {
-    const menuPrinter = new MenuPrinter(new ArticlePrinter());
-    expect(menuPrinter.printGoBack()).toBe("x) 뒤로가기");
-    expect(menuPrinter.printSelect()).toBe("\n\n선택: ");
-    expect(menuPrinter.printEnterKeyToGoBack()).toBe(
-      "아무 키나 누르면 이전 화면으로 되돌아갑니다."
-    );
+  const menuPrinter = new MenuPrinter(new ArticlePrinter());
+
+  test("printArticleList", () => {
+    const articles = [
+      ArticleResponseDtoFixture.create(1),
+      ArticleResponseDtoFixture.create(2),
+    ];
+    expect(menuPrinter.printArticleList(articles)).toBe(`\
+1) ${articles[0].title}
+2) ${articles[1].title}
+x) 뒤로가기
+
+선택: `);
+  });
+
+  test("printArticleList_empty", () => {
+    expect(menuPrinter.printArticleList([])).toBe(`\
+x) 뒤로가기
+
+선택: `);
+  });
+
+  test("printArticleDetail_empty", () => {
+    const article = ArticleResponseDtoFixture.create();
+    expect(menuPrinter.printArticleDetail(article)).toBe(`\
+제목: ${article.title}
+내용: ${article.content}
+
+엔터 키를 누르면 이전 화면으로 되돌아갑니다.`);
+  });
+
+  test("printArticleSaved", () => {
+    const id = 1;
+
+    expect(menuPrinter.printArticleSaved(id)).toBe(`
+게시글을 저장했습니다. id: ${id}
+
+엔터 키를 누르면 이전 화면으로 되돌아갑니다.`);
+  });
+
+  test("printWrongInput", () => {
     expect(menuPrinter.printWrongInput()).toBe(
-      "입력이 올바르지 않습니다. 아래 선택지의 맨 앞 숫자를 입력해주세요."
+      "입력이 올바르지 않습니다. 아래 선택지의 맨 앞 숫자를 입력해주세요.\n\n"
     );
   });
 });
