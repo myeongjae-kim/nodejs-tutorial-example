@@ -3,19 +3,7 @@ import { ArticlePrinter } from "../../article/view/cli/ArticlePrinter";
 import { Constants } from "../../Constants";
 
 export class MenuPrinter {
-  private static _instance: MenuPrinter;
-
-  public static get instance(): MenuPrinter {
-    if (!this._instance) {
-      this._instance = new MenuPrinter();
-    }
-
-    return this._instance;
-  }
-
-  private constructor() {
-    // singleton pattern을 위한 private constructor
-  }
+  public constructor(private articlePrinter: ArticlePrinter) {}
 
   public printHome = (): string =>
     `1) 목록 조회
@@ -23,17 +11,17 @@ export class MenuPrinter {
 x) 종료${this.printSelect()}`;
 
   public printArticleList = (articles: ArticleResponseDto[]): string =>
-    ArticlePrinter.instance.printForList(...articles) +
+    this.articlePrinter.printForList(...articles) +
     Constants.LINE_BREAK +
     this.printGoBack() +
     this.printSelect();
 
   public printArticleDetail = (article: ArticleResponseDto): string =>
-    ArticlePrinter.instance.printEach(article) + this.printEnterKeyToGoBack();
+    this.articlePrinter.printEach(article) + this.printEnterKeyToGoBack();
 
   public printArticleSaved = (id: number): string =>
     Constants.LINE_BREAK +
-    ArticlePrinter.instance.printSaved(id) +
+    this.articlePrinter.printSaved(id) +
     this.printEnterKeyToGoBack();
 
   // 아래는 private도 가능할 것 같은데?
