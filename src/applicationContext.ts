@@ -9,6 +9,7 @@ import { ArticleGetUseCase } from "./article/application/port/incoming/ArticleGe
 import { ArticleListUseCase } from "./article/application/port/incoming/ArticleListUseCase";
 import { ArticleImpl } from "./article/domain/ArticleImpl";
 import { ArticlePrinter } from "./article/view/cli/ArticlePrinter";
+import { CliController } from "./view/cli/CliController";
 import { CliInOut } from "./view/cli/CliInOut";
 import { MenuPrinter } from "./view/cli/MenuPrinter";
 import * as reduxModule from "./view/cli/state-modules/redux/redux-module";
@@ -26,6 +27,7 @@ export interface ApplicationContext {
   >;
 
   cliInOut: CliInOut;
+  cliController: CliController;
 }
 
 export const createApplicationContext = (
@@ -46,20 +48,33 @@ export const createApplicationContext = (
     articlePersistenceAdapter
   );
 
+  const menuPrinter = new MenuPrinter(new ArticlePrinter());
+
+  const cliInOut = new CliInOut(
+    readline.createInterface({
+      input: process.stdin,
+      output: process.stdout,
+    })
+  );
+
+  const cliController = new CliController(
+    cliInOut,
+    menuPrinter,
+    articleQueryService,
+    articleQueryService,
+    articleCommandService
+  );
+
   return {
     articleGetUseCase: articleQueryService,
     articleListUseCase: articleQueryService,
     articleCreateUseCase: articleCommandService,
 
-    menuPrinter: new MenuPrinter(new ArticlePrinter()),
+    menuPrinter,
     stateManager: new StateManager(),
     store: createStore(reduxModule.reducer),
 
-    cliInOut: new CliInOut(
-      readline.createInterface({
-        input: process.stdin,
-        output: process.stdout,
-      })
-    ),
+    cliInOut,
+    cliController,
   };
 };
