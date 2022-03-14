@@ -1,4 +1,11 @@
-import { deepEqual, instance, mock, verify, when } from "ts-mockito";
+import {
+  deepEqual,
+  instance,
+  mock,
+  imock,
+  verify,
+  when,
+} from "@johanblumenberg/ts-mockito";
 import { ArticleCreateUseCase } from "../../../article/application/port/incoming/ArticleCreateUseCase";
 import { CliCommandController } from "../CliCommandController";
 import { CliInOut } from "../CliInOut";
@@ -23,7 +30,7 @@ describe("CliCommandControllerTest", () => {
     mockedMenuPrinter = mock(MenuPrinter);
     menuPrinter = instance(mockedMenuPrinter);
 
-    mockedArticleCreateUseCase = mock<ArticleCreateUseCase>();
+    mockedArticleCreateUseCase = imock<ArticleCreateUseCase>();
     articleCreateUseCase = instance(mockedArticleCreateUseCase);
 
     cliCommandController = new CliCommandController(

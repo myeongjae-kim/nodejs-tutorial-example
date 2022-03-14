@@ -1,6 +1,6 @@
 import { ArticleInMemoryRepository } from "../ArticleInMemoryRepository";
 import { ArticlePersistenceAdapter } from "../ArticlePersistenceAdapter";
-import { mock, when, verify, instance } from "ts-mockito";
+import { mock, when, verify, instance } from "@johanblumenberg/ts-mockito";
 import { ArticleFixture } from "../../../../domain/__test__/ArticleFixture";
 
 describe("ArticlePersistenceAdapterTest", () => {
