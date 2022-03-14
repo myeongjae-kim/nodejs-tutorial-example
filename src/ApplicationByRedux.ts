@@ -1,4 +1,5 @@
-import { CliController } from "./view/cli/CliController";
+import { CliCommandController } from "./view/cli/CliCommandController";
+import { CliQueryController } from "./view/cli/CliQueryController";
 import { MyStore } from "./view/cli/state-modules/redux/MyStore";
 import * as reduxModule from "./view/cli/state-modules/redux/redux-module";
 import { View } from "./view/cli/state-modules/View";
@@ -6,7 +7,8 @@ import { View } from "./view/cli/state-modules/View";
 export class ApplicationByRedux {
   constructor(
     private readonly store: MyStore,
-    private readonly cliController: CliController
+    private readonly cliQueryController: CliQueryController,
+    private readonly cliCommandController: CliCommandController
   ) {
     const subscribe = (view: View, listener: () => void) => {
       store.subscribe(() => {
@@ -29,7 +31,7 @@ export class ApplicationByRedux {
   private homeListener = () => {
     switch (this.store.getState().input) {
       case "":
-        this.cliController
+        this.cliQueryController
           .renderHome()
           .then((answer) =>
             this.store.dispatch(reduxModule.setInput({ input: answer }))
@@ -54,7 +56,7 @@ export class ApplicationByRedux {
 
     switch (input) {
       case "":
-        this.cliController
+        this.cliQueryController
           .renderArticleList()
           .then((answer) =>
             this.store.dispatch(reduxModule.setInput({ input: answer }))
@@ -64,15 +66,17 @@ export class ApplicationByRedux {
         this.store.dispatch(reduxModule.setView({ view: "HOME" }));
         break;
       default:
-        this.cliController.renderArticleDetail(parseInt(input)).then(() => {
-          this.store.dispatch(reduxModule.setView({ view: "ARTICLE_LIST" }));
-        });
+        this.cliQueryController
+          .renderArticleDetail(parseInt(input))
+          .then(() => {
+            this.store.dispatch(reduxModule.setView({ view: "ARTICLE_LIST" }));
+          });
         break;
     }
   };
 
   private articleFormListener = () => {
-    this.cliController.rednerArticleForm().then(() => {
+    this.cliCommandController.rednerArticleForm().then(() => {
       this.store.dispatch(reduxModule.setView({ view: "HOME" }));
     });
   };

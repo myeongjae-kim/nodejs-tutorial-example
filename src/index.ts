@@ -5,14 +5,16 @@ const context = createApplicationContext();
 
 const application = new ApplicationByStateManager(
   context.stateManager,
-  context.cliController
+  context.cliQueryController,
+  context.cliCommandController
 );
 application.run();
 
 /*
 const application = new ApplicationByRedux(
   context.store,
-  context.cliController
+  context.cliQueryController,
+  context.cliCommandController
 );
 application.run();
 */

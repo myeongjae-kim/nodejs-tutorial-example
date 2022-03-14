@@ -9,12 +9,13 @@ import { ArticleGetUseCase } from "./article/application/port/incoming/ArticleGe
 import { ArticleListUseCase } from "./article/application/port/incoming/ArticleListUseCase";
 import { ArticleImpl } from "./article/domain/ArticleImpl";
 import { ArticlePrinter } from "./article/view/cli/ArticlePrinter";
-import { CliController } from "./view/cli/CliController";
+import { CliQueryController } from "./view/cli/CliQueryController";
 import { CliInOut } from "./view/cli/CliInOut";
 import { MenuPrinter } from "./view/cli/MenuPrinter";
 import { MyStore } from "./view/cli/state-modules/redux/MyStore";
 import * as reduxModule from "./view/cli/state-modules/redux/redux-module";
 import { StateManager } from "./view/cli/state-modules/vanila/StateManager";
+import { CliCommandController } from "./view/cli/CliCommandController";
 
 export interface ApplicationContext {
   articleGetUseCase: ArticleGetUseCase;
@@ -25,7 +26,8 @@ export interface ApplicationContext {
   store: MyStore;
 
   cliInOut: CliInOut;
-  cliController: CliController;
+  cliQueryController: CliQueryController;
+  cliCommandController: CliCommandController;
 }
 
 export const createApplicationContext = (
@@ -55,11 +57,16 @@ export const createApplicationContext = (
     })
   );
 
-  const cliController = new CliController(
+  const cliQueryController = new CliQueryController(
     cliInOut,
     menuPrinter,
     articleQueryService,
-    articleQueryService,
+    articleQueryService
+  );
+
+  const cliCommandController = new CliCommandController(
+    cliInOut,
+    menuPrinter,
     articleCommandService
   );
 
@@ -73,6 +80,7 @@ export const createApplicationContext = (
     store: createStore(reduxModule.reducer),
 
     cliInOut,
-    cliController,
+    cliQueryController,
+    cliCommandController,
   };
 };
