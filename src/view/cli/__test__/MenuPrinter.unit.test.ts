@@ -5,6 +5,14 @@ import { MenuPrinter } from "../MenuPrinter";
 describe("MenuPrinterTest", () => {
   const menuPrinter = new MenuPrinter(new ArticlePrinter());
 
+  test("printHome", () => {
+    expect(menuPrinter.printHome()).toBe(`1) 목록 조회
+2) 쓰기
+x) 종료
+
+선택: `);
+  });
+
   test("printArticleList", () => {
     const articles = [
       ArticleResponseDtoFixture.create(1),
