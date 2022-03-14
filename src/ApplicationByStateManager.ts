@@ -3,7 +3,7 @@ import { StateManager } from "./view/cli/state-modules/vanila/StateManager";
 
 export class ApplicationByStateManager {
   constructor(
-    private stateManager: StateManager,
+    private readonly stateManager: StateManager,
     private readonly cliController: CliController
   ) {}
 

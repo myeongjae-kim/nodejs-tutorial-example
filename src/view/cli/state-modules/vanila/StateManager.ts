@@ -20,6 +20,8 @@ export class StateManager {
 
   public articleList = (answer: string) => {
     switch (answer) {
+      case "":
+        break;
       case Constants.GO_BACK_COMMAND:
         this.setState({ view: "HOME" });
         break;

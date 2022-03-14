@@ -37,11 +37,12 @@ export class CliController {
       articles.map((it) => it.id + "") + Constants.GO_BACK_COMMAND
     );
 
-    if (!possibleAnswers.has(answer)) {
-      this.cliInOut.print(this.menuPrinter.printWrongInput());
+    if (possibleAnswers.has(answer)) {
+      return answer;
     }
 
-    return answer;
+    this.cliInOut.print(this.menuPrinter.printWrongInput());
+    return "";
   };
 
   public renderArticleDetail = async (

@@ -1,83 +1,83 @@
-import { ActionFromReducer, Store } from "@reduxjs/toolkit";
 import { CliController } from "./view/cli/CliController";
+import { MyStore } from "./view/cli/state-modules/redux/MyStore";
 import * as reduxModule from "./view/cli/state-modules/redux/redux-module";
+import { View } from "./view/cli/state-modules/View";
 
 export class ApplicationByRedux {
   constructor(
-    private readonly store: Store<
-      reduxModule.State,
-      ActionFromReducer<typeof reduxModule.reducer>
-    >,
+    private readonly store: MyStore,
     private readonly cliController: CliController
   ) {
-    // listener 여러개 등록해서 switch case 없애자
-    // renderer 분리해서 ApplicationByRedux랑 ApplicationByStateManager의 중복코드 없앨 수 있을듯
-    store.subscribe(async () => {
-      const { view, input } = store.getState();
+    const subscribe = (view: View, listener: () => void) => {
+      store.subscribe(() => {
+        if (view === this.store.getState().view) {
+          listener();
+        }
+      });
+    };
 
-      switch (view) {
-        case "HOME":
-          {
-            switch (input) {
-              case "":
-                this.cliController
-                  .renderHome()
-                  .then((answer) =>
-                    this.store.dispatch(reduxModule.setInput({ input: answer }))
-                  );
-                break;
-              case "1":
-                store.dispatch(reduxModule.setView({ view: "ARTICLE_LIST" }));
-                break;
-              case "2":
-                store.dispatch(reduxModule.setView({ view: "ARTICLE_FORM" }));
-                break;
-              case "x":
-                process.exit(0);
-            }
-          }
-          break;
-        case "ARTICLE_LIST":
-          {
-            switch (input) {
-              case "":
-                this.cliController
-                  .renderArticleList()
-                  .then((answer) =>
-                    this.store.dispatch(reduxModule.setInput({ input: answer }))
-                  );
-                break;
-              case "x":
-                store.dispatch(reduxModule.setView({ view: "HOME" }));
-                break;
-              default:
-                this.cliController
-                  .renderArticleDetail(parseInt(input))
-                  .then(() => {
-                    this.store.dispatch(
-                      reduxModule.setView({ view: "ARTICLE_LIST" })
-                    );
-                  });
-                break;
-            }
-          }
-          break;
-        case "ARTICLE_FORM":
-          this.cliController.rednerArticleForm().then(() => {
-            this.store.dispatch(reduxModule.setView({ view: "HOME" }));
-          });
-          break;
-        case "EXIT":
-          process.exit(0);
-      }
-    });
+    subscribe("HOME", this.homeListener);
+    subscribe("ARTICLE_LIST", this.articleListListener);
+    subscribe("ARTICLE_FORM", this.articleFormListener);
+    subscribe("EXIT", this.exitListener);
   }
 
   public run = (): void => {
-    this.cliController
-      .renderHome()
-      .then((answer) =>
-        this.store.dispatch(reduxModule.setInput({ input: answer }))
-      );
+    this.store.dispatch(reduxModule.setView({ view: "HOME" }));
+  };
+
+  private homeListener = () => {
+    switch (this.store.getState().input) {
+      case "":
+        this.cliController
+          .renderHome()
+          .then((answer) =>
+            this.store.dispatch(reduxModule.setInput({ input: answer }))
+          );
+        break;
+      case "1":
+        this.store.dispatch(reduxModule.setView({ view: "ARTICLE_LIST" }));
+        break;
+      case "2":
+        this.store.dispatch(reduxModule.setView({ view: "ARTICLE_FORM" }));
+        break;
+      case "x":
+        this.store.dispatch(reduxModule.setView({ view: "EXIT" }));
+        break;
+      default:
+        this.store.dispatch(reduxModule.setView({ view: "HOME" }));
+    }
+  };
+
+  private articleListListener = () => {
+    const { input } = this.store.getState();
+
+    switch (input) {
+      case "":
+        this.cliController
+          .renderArticleList()
+          .then((answer) =>
+            this.store.dispatch(reduxModule.setInput({ input: answer }))
+          );
+        break;
+      case "x":
+        this.store.dispatch(reduxModule.setView({ view: "HOME" }));
+        break;
+      default:
+        this.cliController.renderArticleDetail(parseInt(input)).then(() => {
+          this.store.dispatch(reduxModule.setView({ view: "ARTICLE_LIST" }));
+        });
+        break;
+    }
+  };
+
+  private articleFormListener = () => {
+    this.cliController.rednerArticleForm().then(() => {
+      this.store.dispatch(reduxModule.setView({ view: "HOME" }));
+    });
+  };
+
+  private exitListener = () => {
+    process.exit(0);
   };
 }

@@ -1,4 +1,4 @@
-import { ActionFromReducer, createStore, Store } from "@reduxjs/toolkit";
+import { createStore } from "@reduxjs/toolkit";
 import readline from "readline";
 import { ArticleInMemoryRepository } from "./article/adapter/outgoing/persistence/ArticleInMemoryRepository";
 import { ArticlePersistenceAdapter } from "./article/adapter/outgoing/persistence/ArticlePersistenceAdapter";
@@ -12,6 +12,7 @@ import { ArticlePrinter } from "./article/view/cli/ArticlePrinter";
 import { CliController } from "./view/cli/CliController";
 import { CliInOut } from "./view/cli/CliInOut";
 import { MenuPrinter } from "./view/cli/MenuPrinter";
+import { MyStore } from "./view/cli/state-modules/redux/MyStore";
 import * as reduxModule from "./view/cli/state-modules/redux/redux-module";
 import { StateManager } from "./view/cli/state-modules/vanila/StateManager";
 
@@ -21,10 +22,7 @@ export interface ApplicationContext {
   articleCreateUseCase: ArticleCreateUseCase;
   menuPrinter: MenuPrinter;
   stateManager: StateManager;
-  store: Store<
-    reduxModule.State,
-    ActionFromReducer<typeof reduxModule.reducer>
-  >;
+  store: MyStore;
 
   cliInOut: CliInOut;
   cliController: CliController;
