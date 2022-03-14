@@ -5,6 +5,7 @@ export class CliInOut {
     console.clear();
   }
 
+  // 아래 코드는 테스트하기어렵네..
   public printAndGet = (toPrint: string, clear = true): Promise<string> =>
     new Promise<string>((resolve) => {
       this.rl.question(toPrint, (answer) => {
