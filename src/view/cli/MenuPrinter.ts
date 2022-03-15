@@ -25,7 +25,7 @@ x) 종료${this.printSelect()}`;
     this.printEnterKeyToGoBack();
 
   public printWrongInput = (): string =>
-    "입력이 올바르지 않습니다. 아래 선택지의 맨 앞 숫자를 입력해주세요." +
+    "입력이 올바르지 않습니다. 아래 선택지의 맨 앞 문자를 입력해주세요." +
     Constants.LINE_BREAK +
     Constants.LINE_BREAK;
 
