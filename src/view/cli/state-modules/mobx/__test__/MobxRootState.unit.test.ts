@@ -13,6 +13,7 @@ describe("MobxRootStateTest", () => {
     const mobxRootState = new MobxRootState({
       view: "ARTICLE_DETAIL",
       input: "what",
+      actionCounter: 0,
     });
 
     // when
@@ -30,6 +31,7 @@ describe("MobxRootStateTest", () => {
     const mobxRootState = new MobxRootState({
       view: "ARTICLE_DETAIL",
       input: "what",
+      actionCounter: 0,
     });
 
     // when

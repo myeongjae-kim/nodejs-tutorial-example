@@ -53,7 +53,7 @@ x) 뒤로가기
 
   test("printWrongInput", () => {
     expect(menuPrinter.printWrongInput()).toBe(
-      "입력이 올바르지 않습니다. 아래 선택지의 맨 앞 숫자를 입력해주세요.\n\n"
+      "입력이 올바르지 않습니다. 아래 선택지의 맨 앞 문자를 입력해주세요.\n\n"
     );
   });
 });

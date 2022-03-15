@@ -19,21 +19,8 @@ describe("MobxLearningTest", () => {
     mobxRootState.setView("ARTICLE_DETAIL");
     mobxRootState.setInput("newInput");
 
-    await new Promise<void>((resolve, reject) => {
-      setTimeout(() => {
-        try {
-          expect(viewLog).toMatchObject([
-            "HOME",
-            "ARTICLE_DETAIL",
-            "ARTICLE_DETAIL",
-          ]);
-          expect(inputLog).toMatchObject(["", "", "newInput"]);
-          resolve();
-        } catch (e) {
-          reject(e);
-        }
-      }, 500); // effect가 발생할 때까지 충분히 기다리기
-    });
+    expect(viewLog).toMatchObject(["HOME", "ARTICLE_DETAIL", "ARTICLE_DETAIL"]);
+    expect(inputLog).toMatchObject(["", "", "newInput"]);
   });
 
   test("autorun_separated", async () => {
@@ -46,7 +33,6 @@ describe("MobxLearningTest", () => {
     autorun(() => {
       viewLog.push(mobxRootState.view);
     });
-
     autorun(() => {
       inputLog.push(mobxRootState.input);
     });
@@ -54,19 +40,10 @@ describe("MobxLearningTest", () => {
     mobxRootState.setView("ARTICLE_DETAIL");
     mobxRootState.setInput("newInput");
 
-    await new Promise<void>((resolve, reject) => {
-      setTimeout(() => {
-        try {
-          expect(viewLog).toMatchObject(["HOME", "ARTICLE_DETAIL"]);
-          // inputLog는 setView()를 호출할 때 ""가 할당되지만, 이전에 동일한 값이 할당되어
-          // 있으므로 autorun이 실행되지 않아서 inputLog가 쌓이지 않는다.
-          expect(inputLog).toMatchObject(["", "newInput"]);
-          resolve();
-        } catch (e) {
-          reject(e);
-        }
-      }, 500); // effect가 발생할 때까지 충분히 기다리기
-    });
+    expect(viewLog).toMatchObject(["HOME", "ARTICLE_DETAIL"]);
+    // inputLog는 setView()를 호출할 때 ""가 할당되지만, 이전에 동일한 값이 할당되어
+    // 있으므로 autorun이 실행되지 않아서 inputLog가 쌓이지 않는다.
+    expect(inputLog).toMatchObject(["", "newInput"]);
   });
 
   test("reaction", async () => {
@@ -80,7 +57,6 @@ describe("MobxLearningTest", () => {
       () => mobxRootState.view,
       (view) => viewLog.push(view)
     );
-
     reaction(
       () => mobxRootState.input,
       (input) => inputLog.push(input)
@@ -89,16 +65,7 @@ describe("MobxLearningTest", () => {
     mobxRootState.setView("ARTICLE_DETAIL");
     mobxRootState.setInput("newInput");
 
-    await new Promise<void>((resolve, reject) => {
-      setTimeout(() => {
-        try {
-          expect(viewLog).toMatchObject(["ARTICLE_DETAIL"]);
-          expect(inputLog).toMatchObject(["newInput"]);
-          resolve();
-        } catch (e) {
-          reject(e);
-        }
-      }, 500); // effect가 발생할 때까지 충분히 기다리기
-    });
+    expect(viewLog).toMatchObject(["ARTICLE_DETAIL"]);
+    expect(inputLog).toMatchObject(["newInput"]);
   });
 });

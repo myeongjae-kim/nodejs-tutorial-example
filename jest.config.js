@@ -5,7 +5,7 @@ module.exports = {
   testPathIgnorePatterns: [
     "<rootDir>/dist/",
     "<rootDir>/src/index.ts",
-    "<rootDir>/src/applicationContext.ts"
+    "<rootDir>/src/applicationContext.ts",
   ],
   collectCoverageFrom: ["<rootDir>/src/**", "!**/__test__/**"],
 };

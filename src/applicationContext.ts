@@ -16,6 +16,7 @@ import { MyStore } from "./view/cli/state-modules/redux/MyStore";
 import * as reduxModule from "./view/cli/state-modules/redux/redux-module";
 import { StateManager } from "./view/cli/state-modules/vanila/StateManager";
 import { CliCommandController } from "./view/cli/CliCommandController";
+import { MobxRootState } from "./view/cli/state-modules/mobx/MobxRootState";
 
 export interface ApplicationContext {
   articleGetUseCase: ArticleGetUseCase;
@@ -24,6 +25,7 @@ export interface ApplicationContext {
   menuPrinter: MenuPrinter;
   stateManager: StateManager;
   store: MyStore;
+  mobxRootState: MobxRootState;
 
   cliInOut: CliInOut;
   cliQueryController: CliQueryController;
@@ -78,6 +80,7 @@ export const createApplicationContext = (
     menuPrinter,
     stateManager: new StateManager(),
     store: createStore(reduxModule.reducer),
+    mobxRootState: new MobxRootState(),
 
     cliInOut,
     cliQueryController,
