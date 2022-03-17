@@ -6,9 +6,9 @@ import {
   verify,
   when,
 } from "@johanblumenberg/ts-mockito";
-import { ArticleCreateUseCase } from "../../../article/application/port/incoming/ArticleCreateUseCase";
-import { CliCommandController } from "../CliCommandController";
-import { CliInOut } from "../CliInOut";
+import { ArticleCreateUseCase } from "../../../application/port/incoming/ArticleCreateUseCase";
+import { ArticleCommandViewController } from "../ArticleCommandViewController";
+import { CliInOut } from "../../../../common/view/cli/CliInOut";
 import { MenuPrinter } from "../MenuPrinter";
 
 describe("CliCommandControllerTest", () => {
@@ -21,7 +21,7 @@ describe("CliCommandControllerTest", () => {
   let mockedArticleCreateUseCase: ArticleCreateUseCase;
   let articleCreateUseCase: ArticleCreateUseCase;
 
-  let cliCommandController: CliCommandController;
+  let cliCommandController: ArticleCommandViewController;
 
   beforeEach(() => {
     mockedCliInOut = mock(CliInOut);
@@ -33,7 +33,7 @@ describe("CliCommandControllerTest", () => {
     mockedArticleCreateUseCase = imock<ArticleCreateUseCase>();
     articleCreateUseCase = instance(mockedArticleCreateUseCase);
 
-    cliCommandController = new CliCommandController(
+    cliCommandController = new ArticleCommandViewController(
       cliInOut,
       menuPrinter,
       articleCreateUseCase

@@ -1,6 +1,6 @@
-import { ArticleResponseDto } from "../../article/application/port/incoming/ArticleResponseDto";
-import { ArticlePrinter } from "../../article/view/cli/ArticlePrinter";
-import { Constants } from "../../Constants";
+import { Constants } from "../../../Constants";
+import { ArticleResponseDto } from "../../application/port/incoming/ArticleResponseDto";
+import { ArticlePrinter } from "./ArticlePrinter";
 
 export class MenuPrinter {
   public constructor(private articlePrinter: ArticlePrinter) {}

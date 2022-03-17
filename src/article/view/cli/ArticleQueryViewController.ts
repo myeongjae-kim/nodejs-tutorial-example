@@ -1,10 +1,10 @@
-import { ArticleGetUseCase } from "../../article/application/port/incoming/ArticleGetUseCase";
-import { ArticleListUseCase } from "../../article/application/port/incoming/ArticleListUseCase";
-import { Constants } from "../../Constants";
-import { CliInOut } from "./CliInOut";
+import { Constants } from "../../../Constants";
+import { ArticleGetUseCase } from "../../application/port/incoming/ArticleGetUseCase";
+import { ArticleListUseCase } from "../../application/port/incoming/ArticleListUseCase";
+import { CliInOut } from "../../../common/view/cli/CliInOut";
 import { MenuPrinter } from "./MenuPrinter";
 
-export class CliQueryController {
+export class ArticleQueryViewController {
   constructor(
     private readonly cliInOut: CliInOut,
     private readonly menuPrinter: MenuPrinter,

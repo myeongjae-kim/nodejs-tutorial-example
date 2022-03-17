@@ -1,4 +1,4 @@
-import { Constants } from "../../../../Constants";
+import { Constants } from "../../../../../Constants";
 import { createInitialState, State } from "../State";
 
 export class StateManager {

@@ -1,12 +1,12 @@
-import { CliCommandController } from "./view/cli/CliCommandController";
-import { CliQueryController } from "./view/cli/CliQueryController";
-import { StateManager } from "./view/cli/state-modules/vanila/StateManager";
+import { ArticleCommandViewController } from "./article/view/cli/ArticleCommandViewController";
+import { ArticleQueryViewController } from "./article/view/cli/ArticleQueryViewController";
+import { StateManager } from "./article/view/cli/state-modules/vanila/StateManager";
 
 export class ApplicationByStateManager {
   constructor(
     private readonly stateManager: StateManager,
-    private readonly cliQueryController: CliQueryController,
-    private readonly cliCommandController: CliCommandController
+    private readonly cliQueryController: ArticleQueryViewController,
+    private readonly cliCommandController: ArticleCommandViewController
   ) {}
 
   public run = async () => {

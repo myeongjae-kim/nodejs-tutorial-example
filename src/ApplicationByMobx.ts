@@ -1,13 +1,13 @@
 import { reaction } from "mobx";
-import { CliCommandController } from "./view/cli/CliCommandController";
-import { CliQueryController } from "./view/cli/CliQueryController";
-import { MobxRootState } from "./view/cli/state-modules/mobx/MobxRootState";
+import { ArticleCommandViewController } from "./article/view/cli/ArticleCommandViewController";
+import { ArticleQueryViewController } from "./article/view/cli/ArticleQueryViewController";
+import { MobxRootState } from "./article/view/cli/state-modules/mobx/MobxRootState";
 
 export class ApplicationByMobx {
   constructor(
     private readonly mobxRootState: MobxRootState,
-    private readonly cliQueryController: CliQueryController,
-    private readonly cliCommandController: CliCommandController
+    private readonly cliQueryController: ArticleQueryViewController,
+    private readonly cliCommandController: ArticleCommandViewController
   ) {
     reaction(
       () => mobxRootState.actionCounter,

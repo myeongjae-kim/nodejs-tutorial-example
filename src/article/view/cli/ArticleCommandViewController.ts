@@ -1,8 +1,8 @@
-import { ArticleCreateUseCase } from "../../article/application/port/incoming/ArticleCreateUseCase";
-import { CliInOut } from "./CliInOut";
+import { ArticleCreateUseCase } from "../../application/port/incoming/ArticleCreateUseCase";
+import { CliInOut } from "../../../common/view/cli/CliInOut";
 import { MenuPrinter } from "./MenuPrinter";
 
-export class CliCommandController {
+export class ArticleCommandViewController {
   constructor(
     private readonly cliInOut: CliInOut,
     private readonly menuPrinter: MenuPrinter,

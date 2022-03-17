@@ -1,5 +1,5 @@
-import { ArticleResponseDtoFixture } from "../../../article/application/port/incoming/__test__/ArticleResponseDtoFixture";
-import { ArticlePrinter } from "../../../article/view/cli/ArticlePrinter";
+import { ArticleResponseDtoFixture } from "../../../application/port/incoming/__test__/ArticleResponseDtoFixture";
+import { ArticlePrinter } from "../ArticlePrinter";
 import { MenuPrinter } from "../MenuPrinter";
 
 describe("MenuPrinterTest", () => {

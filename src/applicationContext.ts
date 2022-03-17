@@ -9,14 +9,14 @@ import { ArticleGetUseCase } from "./article/application/port/incoming/ArticleGe
 import { ArticleListUseCase } from "./article/application/port/incoming/ArticleListUseCase";
 import { ArticleImpl } from "./article/domain/ArticleImpl";
 import { ArticlePrinter } from "./article/view/cli/ArticlePrinter";
-import { CliQueryController } from "./view/cli/CliQueryController";
-import { CliInOut } from "./view/cli/CliInOut";
-import { MenuPrinter } from "./view/cli/MenuPrinter";
-import { MyStore } from "./view/cli/state-modules/redux/MyStore";
-import * as reduxModule from "./view/cli/state-modules/redux/redux-module";
-import { StateManager } from "./view/cli/state-modules/vanila/StateManager";
-import { CliCommandController } from "./view/cli/CliCommandController";
-import { MobxRootState } from "./view/cli/state-modules/mobx/MobxRootState";
+import { MyStore } from "./article/view/cli/state-modules/redux/MyStore";
+import * as reduxModule from "./article/view/cli/state-modules/redux/redux-module";
+import { StateManager } from "./article/view/cli/state-modules/vanila/StateManager";
+import { MobxRootState } from "./article/view/cli/state-modules/mobx/MobxRootState";
+import { MenuPrinter } from "./article/view/cli/MenuPrinter";
+import { CliInOut } from "./common/view/cli/CliInOut";
+import { ArticleQueryViewController } from "./article/view/cli/ArticleQueryViewController";
+import { ArticleCommandViewController } from "./article/view/cli/ArticleCommandViewController";
 
 export interface ApplicationContext {
   articleGetUseCase: ArticleGetUseCase;
@@ -28,8 +28,8 @@ export interface ApplicationContext {
   mobxRootState: MobxRootState;
 
   cliInOut: CliInOut;
-  cliQueryController: CliQueryController;
-  cliCommandController: CliCommandController;
+  cliQueryController: ArticleQueryViewController;
+  cliCommandController: ArticleCommandViewController;
 }
 
 export const createApplicationContext = (
@@ -59,14 +59,14 @@ export const createApplicationContext = (
     })
   );
 
-  const cliQueryController = new CliQueryController(
+  const cliQueryController = new ArticleQueryViewController(
     cliInOut,
     menuPrinter,
     articleQueryService,
     articleQueryService
   );
 
-  const cliCommandController = new CliCommandController(
+  const cliCommandController = new ArticleCommandViewController(
     cliInOut,
     menuPrinter,
     articleCommandService

@@ -1,14 +1,14 @@
-import { CliCommandController } from "./view/cli/CliCommandController";
-import { CliQueryController } from "./view/cli/CliQueryController";
-import { MyStore } from "./view/cli/state-modules/redux/MyStore";
-import * as reduxModule from "./view/cli/state-modules/redux/redux-module";
-import { View } from "./view/cli/state-modules/View";
+import { ArticleCommandViewController } from "./article/view/cli/ArticleCommandViewController";
+import { ArticleQueryViewController } from "./article/view/cli/ArticleQueryViewController";
+import { MyStore } from "./article/view/cli/state-modules/redux/MyStore";
+import * as reduxModule from "./article/view/cli/state-modules/redux/redux-module";
+import { View } from "./article/view/cli/state-modules/View";
 
 export class ApplicationByRedux {
   constructor(
     private readonly store: MyStore,
-    private readonly cliQueryController: CliQueryController,
-    private readonly cliCommandController: CliCommandController
+    private readonly cliQueryController: ArticleQueryViewController,
+    private readonly cliCommandController: ArticleCommandViewController
   ) {
     const subscribe = (view: View, listener: () => void) => {
       store.subscribe(() => {
