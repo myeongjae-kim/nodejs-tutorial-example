@@ -1,5 +1,5 @@
 import { Constants } from "../../../Constants";
-import { ArticleResponseDto } from "../../application/port/incoming/ArticleResponseDto";
+import { ArticleResponse } from "../../application/port/incoming/ArticleResponse";
 import { ArticlePrinter } from "./ArticlePrinter";
 
 export class MenuPrinter {
@@ -10,13 +10,13 @@ export class MenuPrinter {
 2) 쓰기
 x) 종료${this.printSelect()}`;
 
-  public printArticleList = (articles: ArticleResponseDto[]): string =>
+  public printArticleList = (articles: ArticleResponse[]): string =>
     this.articlePrinter.printForList(...articles) +
     (articles.length > 0 ? Constants.LINE_BREAK : "") +
     this.printGoBack() +
     this.printSelect();
 
-  public printArticleDetail = (article: ArticleResponseDto): string =>
+  public printArticleDetail = (article: ArticleResponse): string =>
     this.articlePrinter.printEach(article) + this.printEnterKeyToGoBack();
 
   public printArticleSaved = (id: number): string =>

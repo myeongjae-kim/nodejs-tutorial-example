@@ -1,12 +1,12 @@
 import { Constants } from "../../../Constants";
-import { ArticleResponseDto } from "../../application/port/incoming/ArticleResponseDto";
+import { ArticleResponse } from "../../application/port/incoming/ArticleResponse";
 
 export class ArticlePrinter {
-  public printForList = (...dto: ArticleResponseDto[]): string =>
-    dto.map((it) => `${it.id}) ${it.title}`).join(Constants.LINE_BREAK);
+  public printForList = (...response: ArticleResponse[]): string =>
+    response.map((it) => `${it.id}) ${it.title}`).join(Constants.LINE_BREAK);
 
-  public printEach = (dto: ArticleResponseDto): string =>
-    `제목: ${dto.title}${Constants.LINE_BREAK}내용: ${dto.content}`;
+  public printEach = (response: ArticleResponse): string =>
+    `제목: ${response.title}${Constants.LINE_BREAK}내용: ${response.content}`;
 
   public printSaved = (id: number): string =>
     `게시글을 저장했습니다. id: ${id}`;

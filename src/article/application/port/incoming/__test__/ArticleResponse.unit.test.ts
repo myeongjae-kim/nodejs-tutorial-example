@@ -1,6 +1,6 @@
-import { from } from "../ArticleResponseDto";
+import { from } from "../ArticleResponse";
 
-describe("ArticleResponseDtoTest", () => {
+describe("ArticleResponseTest", () => {
   test("from", () => {
     // given
     const id = 1;
@@ -8,10 +8,10 @@ describe("ArticleResponseDtoTest", () => {
     const title = "title";
 
     // when
-    const responseDto = from({ id, content, title });
+    const response = from({ id, content, title });
 
     // then
-    expect(responseDto).toMatchObject({
+    expect(response).toMatchObject({
       id: id,
       content: content,
       title: title,

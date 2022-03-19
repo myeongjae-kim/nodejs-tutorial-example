@@ -1,5 +1,5 @@
-import { ArticleResponseDto } from "./ArticleResponseDto";
+import { ArticleResponse } from "./ArticleResponse";
 
 export interface ArticleListUseCase {
-  findAll(): ArticleResponseDto[];
+  findAll(): ArticleResponse[];
 }

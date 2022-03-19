@@ -1,5 +1,5 @@
 import { ArticleCreateUseCase } from "./port/incoming/ArticleCreateUseCase";
-import { ArticleRequestDto, toEntity } from "./port/incoming/ArticleRequestDto";
+import { ArticleRequest, toEntity } from "./port/incoming/ArticleRequest";
 import { ArticleSavePort } from "./port/outgoing/ArticleSavePort";
 
 export class ArticleCommandService implements ArticleCreateUseCase {
@@ -11,9 +11,9 @@ export class ArticleCommandService implements ArticleCreateUseCase {
     return () => nextId++;
   })(1);
 
-  public create = (requestDto: ArticleRequestDto): { id: number } => {
+  public create = (request: ArticleRequest): { id: number } => {
     const id = this.getNextId();
-    this.articleSavePort.save(toEntity(id, requestDto));
+    this.articleSavePort.save(toEntity(id, request));
 
     return { id };
   };

@@ -1,21 +1,18 @@
 import { Constants } from "../../../../Constants";
-import { ArticleResponseDto } from "../../../application/port/incoming/ArticleResponseDto";
-import { ArticleResponseDtoFixture } from "../../../application/port/incoming/__test__/ArticleResponseDtoFixture";
+import { ArticleResponse } from "../../../application/port/incoming/ArticleResponse";
+import { ArticleResponseFixture } from "../../../application/port/incoming/__test__/ArticleResponseFixture";
 import { ArticlePrinter } from "../ArticlePrinter";
 
 describe("ArticlePrinterTest", () => {
   (
     [
-      ["single", [ArticleResponseDtoFixture.create(1)], "1) title"],
+      ["single", [ArticleResponseFixture.create(1)], "1) title"],
       [
         "plural",
-        [
-          ArticleResponseDtoFixture.create(1),
-          ArticleResponseDtoFixture.create(2),
-        ],
+        [ArticleResponseFixture.create(1), ArticleResponseFixture.create(2)],
         "1) title" + Constants.LINE_BREAK + "2) title",
       ],
-    ] as Array<[string, ArticleResponseDto[], string]>
+    ] as Array<[string, ArticleResponse[], string]>
   ).forEach(([condition, articles, expected]) => {
     test(`printForList_${condition}`, () => {
       expect(new ArticlePrinter().printForList(...articles)).toBe(expected);
@@ -23,7 +20,7 @@ describe("ArticlePrinterTest", () => {
   });
 
   test("printEach", () => {
-    const response = ArticleResponseDtoFixture.create();
+    const response = ArticleResponseFixture.create();
     expect(new ArticlePrinter().printEach(response)).toBe(
       "제목: title" + Constants.LINE_BREAK + "내용: content"
     );

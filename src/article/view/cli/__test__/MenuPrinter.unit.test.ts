@@ -1,4 +1,4 @@
-import { ArticleResponseDtoFixture } from "../../../application/port/incoming/__test__/ArticleResponseDtoFixture";
+import { ArticleResponseFixture } from "../../../application/port/incoming/__test__/ArticleResponseFixture";
 import { ArticlePrinter } from "../ArticlePrinter";
 import { MenuPrinter } from "../MenuPrinter";
 
@@ -15,8 +15,8 @@ x) 종료
 
   test("printArticleList", () => {
     const articles = [
-      ArticleResponseDtoFixture.create(1),
-      ArticleResponseDtoFixture.create(2),
+      ArticleResponseFixture.create(1),
+      ArticleResponseFixture.create(2),
     ];
     expect(menuPrinter.printArticleList(articles)).toBe(`\
 1) ${articles[0].title}
@@ -34,7 +34,7 @@ x) 뒤로가기
   });
 
   test("printArticleDetail_empty", () => {
-    const article = ArticleResponseDtoFixture.create();
+    const article = ArticleResponseFixture.create();
     expect(menuPrinter.printArticleDetail(article)).toBe(`\
 제목: ${article.title}
 내용: ${article.content}

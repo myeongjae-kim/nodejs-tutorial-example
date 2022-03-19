@@ -1,6 +1,6 @@
 import { ArticleImpl } from "../../domain/ArticleImpl";
 import { ArticleCommandService } from "../ArticleCommandService";
-import { ArticleRequestDto } from "../port/incoming/ArticleRequestDto";
+import { ArticleRequest } from "../port/incoming/ArticleRequest";
 
 describe("ArticleCommandServiceTest", () => {
   let saved: ArticleImpl[] = [];
@@ -15,15 +15,15 @@ describe("ArticleCommandServiceTest", () => {
 
   test("save", () => {
     // given
-    const articleRequestDto: ArticleRequestDto = {
+    const articleRequest: ArticleRequest = {
       title: "title",
       content: "content",
     };
 
-    expect(articleCommandService.create(articleRequestDto).id).toBe(1);
+    expect(articleCommandService.create(articleRequest).id).toBe(1);
     expect(saved).toHaveLength(1);
 
-    expect(articleCommandService.create(articleRequestDto).id).toBe(2);
+    expect(articleCommandService.create(articleRequest).id).toBe(2);
     expect(saved).toHaveLength(2);
   });
 });
