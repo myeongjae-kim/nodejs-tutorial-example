@@ -11,7 +11,8 @@
     "report": "jest unit --collect-coverage && open coverage/lcov-report/index.html",
     "lint": "eslint . --ext .ts,.tsx",
     "prettier": "prettier --write .",
-    "clean": "rm -rf dist/*"
+    "clean": "rm -rf dist/*",
+    "graph": "depcruise --exclude \"^node_modules\" --ts-pre-compilation-deps --output-type dot src/index.ts | dot -T svg -o dependencies.svg"
   },
   "nodemonConfig": {
     "exec": "ts-node src/index.ts",
@@ -40,6 +41,7 @@
     "@types/jest": "^27.4.1",
     "@typescript-eslint/eslint-plugin": "^5.14.0",
     "@typescript-eslint/parser": "^5.14.0",
+    "dependency-cruiser": "^11.4.1",
     "eslint": "^8.11.0",
     "eslint-config-prettier": "^8.5.0",
     "jest": "^27.5.1",
