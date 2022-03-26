@@ -22,12 +22,11 @@ export interface ApplicationContext {
   articleGetUseCase: ArticleGetUseCase;
   articleListUseCase: ArticleListUseCase;
   articleCreateUseCase: ArticleCreateUseCase;
-  menuPrinter: MenuPrinter;
+
   stateManager: StateManager;
   store: MyStore;
   mobxRootState: MobxRootState;
 
-  cliInOut: CliInOut;
   cliQueryController: ArticleQueryViewController;
   cliCommandController: ArticleCommandViewController;
 }
@@ -77,12 +76,10 @@ export const createApplicationContext = (
     articleListUseCase: articleQueryService,
     articleCreateUseCase: articleCommandService,
 
-    menuPrinter,
     stateManager: new StateManager(),
     store: createStore(reduxModule.reducer),
     mobxRootState: new MobxRootState(),
 
-    cliInOut,
     cliQueryController,
     cliCommandController,
   };
