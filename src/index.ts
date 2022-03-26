@@ -1,27 +1,28 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { ApplicationByMobx } from "./ApplicationByMobx";
+import { ApplicationByRedux } from "./ApplicationByRedux";
+import { ApplicationByStateManager } from "./ApplicationByStateManager";
 import { createApplicationContext } from "./applicationContext";
 
 const context = createApplicationContext();
 
-/*
-const application = new ApplicationByStateManager(
+const applicationByStateManager = new ApplicationByStateManager(
   context.stateManager,
   context.cliQueryController,
   context.cliCommandController
 );
-application.run();
+applicationByStateManager.run();
 
-const application = new ApplicationByRedux(
+const applicationByRedux = new ApplicationByRedux(
   context.store,
   context.cliQueryController,
   context.cliCommandController
 );
-application.run();
-*/
+// applicationByRedux.run();
 
-const application = new ApplicationByMobx(
+const applicationByMobx = new ApplicationByMobx(
   context.mobxRootState,
   context.cliQueryController,
   context.cliCommandController
 );
-application.run();
+// applicationByMobx.run();
