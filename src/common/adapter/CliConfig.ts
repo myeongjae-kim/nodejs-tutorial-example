@@ -27,8 +27,6 @@ export class CliConfig implements DiConfig {
       })
     );
 
-    c.bind<CliInOut>(CliConfig.SERVICE_ID.CliInOut)
-      .to(CliInOut)
-      .inSingletonScope();
+    c.bind<CliInOut>(CliConfig.SERVICE_ID.CliInOut).to(CliInOut);
   }
 }

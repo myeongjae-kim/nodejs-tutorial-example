@@ -31,15 +31,11 @@ export class ArticleOutgoingConfig implements DiConfig {
     // private
     c.bind<ArticleInMemoryRepository>(
       ArticleOutgoingConfig.SERVICE_ID_PRIVATE.ArticleInMemoryRepository
-    )
-      .to(ArticleInMemoryRepository)
-      .inSingletonScope();
+    ).to(ArticleInMemoryRepository);
 
     c.bind<ArticlePersistenceAdapter>(
       ArticleOutgoingConfig.SERVICE_ID_PRIVATE.ArticlePersistenceAdapter
-    )
-      .to(ArticlePersistenceAdapter)
-      .inSingletonScope();
+    ).to(ArticlePersistenceAdapter);
 
     // public
     c.bind<ArticleLoadPort>(

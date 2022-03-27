@@ -27,7 +27,9 @@ export const initializeContainer = (): Container => {
   }
 
   // create IoC Container and bind service identifiers to classes or instances
-  const container = new Container();
+  const container = new Container({
+    defaultScope: "Singleton",
+  });
   diConfigs.forEach((it) => it.bind(container));
 
   return container;
