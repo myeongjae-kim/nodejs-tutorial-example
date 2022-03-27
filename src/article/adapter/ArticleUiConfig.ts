@@ -69,24 +69,20 @@ export class ArticleUiConfig implements DiConfig {
   }
 
   public bind(c: Container): void {
-    c.bind<ArticlePrinter>(ArticleUiConfig.SERVICE_ID_PRIVATE.ArticlePrinter)
-      .to(ArticlePrinter)
-      .inSingletonScope();
+    c.bind<ArticlePrinter>(
+      ArticleUiConfig.SERVICE_ID_PRIVATE.ArticlePrinter
+    ).to(ArticlePrinter);
 
-    c.bind<MenuPrinter>(ArticleUiConfig.SERVICE_ID_PRIVATE.MenuPrinter)
-      .to(MenuPrinter)
-      .inSingletonScope();
+    c.bind<MenuPrinter>(ArticleUiConfig.SERVICE_ID_PRIVATE.MenuPrinter).to(
+      MenuPrinter
+    );
 
     c.bind<ArticleCommandViewController>(
       ArticleUiConfig.SERVICE_ID.ArticleCommandViewController
-    )
-      .to(ArticleCommandViewController)
-      .inSingletonScope();
+    ).to(ArticleCommandViewController);
 
     c.bind<ArticleQueryViewController>(
       ArticleUiConfig.SERVICE_ID.ArticleQueryViewController
-    )
-      .to(ArticleQueryViewController)
-      .inSingletonScope();
+    ).to(ArticleQueryViewController);
   }
 }

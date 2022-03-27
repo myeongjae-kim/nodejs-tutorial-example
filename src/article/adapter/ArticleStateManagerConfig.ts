@@ -11,8 +11,6 @@ export class ArticleStateManagerConfig implements DiConfig {
     decorate(injectable(), StateManager);
   }
   public bind(c: Container): void {
-    c.bind(ArticleStateManagerConfig.SERVICE_ID.StateManager)
-      .to(StateManager)
-      .inSingletonScope();
+    c.bind(ArticleStateManagerConfig.SERVICE_ID.StateManager).to(StateManager);
   }
 }

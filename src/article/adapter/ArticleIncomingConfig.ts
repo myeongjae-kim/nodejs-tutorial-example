@@ -38,15 +38,11 @@ export class ArticleIncomingConfig implements DiConfig {
     // private
     c.bind<ArticleCommandService>(
       ArticleIncomingConfig.SERVICE_ID_PRIVATE.ArticleCommandService
-    )
-      .to(ArticleCommandService)
-      .inSingletonScope();
+    ).to(ArticleCommandService);
 
     c.bind<ArticleQueryService>(
       ArticleIncomingConfig.SERVICE_ID_PRIVATE.ArticleQueryService
-    )
-      .to(ArticleQueryService)
-      .inSingletonScope();
+    ).to(ArticleQueryService);
 
     // public
     c.bind<ArticleCreateUseCase>(
