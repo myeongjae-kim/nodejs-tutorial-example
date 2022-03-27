@@ -6,8 +6,8 @@ import { MobxRootState } from "./article/view/cli/state-modules/mobx/MobxRootSta
 export class ApplicationByMobx {
   constructor(
     private readonly mobxRootState: MobxRootState,
-    private readonly cliQueryController: ArticleQueryViewController,
-    private readonly cliCommandController: ArticleCommandViewController
+    private readonly articleQueryViewController: ArticleQueryViewController,
+    private readonly articleCommandViewController: ArticleCommandViewController
   ) {
     reaction(
       () => mobxRootState.actionCounter,
@@ -36,7 +36,7 @@ export class ApplicationByMobx {
   private homeListener = () => {
     switch (this.mobxRootState.input) {
       case "":
-        this.cliQueryController
+        this.articleQueryViewController
           .renderHome()
           .then((answer) => this.mobxRootState.setInput(answer));
         break;
@@ -59,7 +59,7 @@ export class ApplicationByMobx {
 
     switch (input) {
       case "":
-        this.cliQueryController
+        this.articleQueryViewController
           .renderArticleList()
           .then((answer) => this.mobxRootState.setInput(answer));
         break;
@@ -67,7 +67,7 @@ export class ApplicationByMobx {
         this.mobxRootState.setView("HOME");
         break;
       default:
-        this.cliQueryController
+        this.articleQueryViewController
           .renderArticleDetail(parseInt(input))
           .then(() => this.mobxRootState.setView("ARTICLE_LIST"));
         break;
@@ -75,7 +75,7 @@ export class ApplicationByMobx {
   };
 
   private articleFormListener = () => {
-    this.cliCommandController.rednerArticleForm().then(() => {
+    this.articleCommandViewController.rednerArticleForm().then(() => {
       this.mobxRootState.setView("HOME");
     });
   };

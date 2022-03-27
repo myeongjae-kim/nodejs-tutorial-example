@@ -7,8 +7,8 @@ import { View } from "./article/view/cli/state-modules/View";
 export class ApplicationByRedux {
   constructor(
     private readonly store: MyStore,
-    private readonly cliQueryController: ArticleQueryViewController,
-    private readonly cliCommandController: ArticleCommandViewController
+    private readonly articleQueryViewController: ArticleQueryViewController,
+    private readonly articleCommandViewController: ArticleCommandViewController
   ) {
     const subscribe = (view: View, listener: () => void) => {
       store.subscribe(() => {
@@ -31,7 +31,7 @@ export class ApplicationByRedux {
   private homeListener = () => {
     switch (this.store.getState().input) {
       case "":
-        this.cliQueryController
+        this.articleQueryViewController
           .renderHome()
           .then((answer) =>
             this.store.dispatch(reduxModule.setInput({ input: answer }))
@@ -56,7 +56,7 @@ export class ApplicationByRedux {
 
     switch (input) {
       case "":
-        this.cliQueryController
+        this.articleQueryViewController
           .renderArticleList()
           .then((answer) =>
             this.store.dispatch(reduxModule.setInput({ input: answer }))
@@ -66,7 +66,7 @@ export class ApplicationByRedux {
         this.store.dispatch(reduxModule.setView({ view: "HOME" }));
         break;
       default:
-        this.cliQueryController
+        this.articleQueryViewController
           .renderArticleDetail(parseInt(input))
           .then(() => {
             this.store.dispatch(reduxModule.setView({ view: "ARTICLE_LIST" }));
@@ -76,7 +76,7 @@ export class ApplicationByRedux {
   };
 
   private articleFormListener = () => {
-    this.cliCommandController.rednerArticleForm().then(() => {
+    this.articleCommandViewController.rednerArticleForm().then(() => {
       this.store.dispatch(reduxModule.setView({ view: "HOME" }));
     });
   };

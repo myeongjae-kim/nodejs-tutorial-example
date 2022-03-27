@@ -11,7 +11,7 @@ import { ArticleCommandViewController } from "../ArticleCommandViewController";
 import { CliInOut } from "../../../../common/view/cli/CliInOut";
 import { MenuPrinter } from "../MenuPrinter";
 
-describe("CliCommandControllerTest", () => {
+describe("ArticleCommandViewControllerTest", () => {
   let mockedCliInOut: CliInOut;
   let cliInOut: CliInOut;
 
@@ -21,7 +21,7 @@ describe("CliCommandControllerTest", () => {
   let mockedArticleCreateUseCase: ArticleCreateUseCase;
   let articleCreateUseCase: ArticleCreateUseCase;
 
-  let cliCommandController: ArticleCommandViewController;
+  let articleCommandViewController: ArticleCommandViewController;
 
   beforeEach(() => {
     mockedCliInOut = mock(CliInOut);
@@ -33,7 +33,7 @@ describe("CliCommandControllerTest", () => {
     mockedArticleCreateUseCase = imock<ArticleCreateUseCase>();
     articleCreateUseCase = instance(mockedArticleCreateUseCase);
 
-    cliCommandController = new ArticleCommandViewController(
+    articleCommandViewController = new ArticleCommandViewController(
       cliInOut,
       menuPrinter,
       articleCreateUseCase
@@ -59,7 +59,7 @@ describe("CliCommandControllerTest", () => {
     when(mockedCliInOut.printAndGet(savedMessage)).thenResolve("");
 
     // when
-    await cliCommandController.rednerArticleForm();
+    await articleCommandViewController.rednerArticleForm();
 
     // then
     verify(mockedCliInOut.printAndGet("제목: ", false)).once();

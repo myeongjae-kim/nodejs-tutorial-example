@@ -27,8 +27,8 @@ export interface ApplicationContext {
   store: MyStore;
   mobxRootState: MobxRootState;
 
-  cliQueryController: ArticleQueryViewController;
-  cliCommandController: ArticleCommandViewController;
+  articleQueryViewController: ArticleQueryViewController;
+  articleCommandViewController: ArticleCommandViewController;
 }
 
 export const createApplicationContext = (
@@ -58,14 +58,14 @@ export const createApplicationContext = (
     })
   );
 
-  const cliQueryController = new ArticleQueryViewController(
+  const articleQueryViewController = new ArticleQueryViewController(
     cliInOut,
     menuPrinter,
     articleQueryService,
     articleQueryService
   );
 
-  const cliCommandController = new ArticleCommandViewController(
+  const articleCommandViewController = new ArticleCommandViewController(
     cliInOut,
     menuPrinter,
     articleCommandService
@@ -80,7 +80,7 @@ export const createApplicationContext = (
     store: createStore(reduxModule.reducer),
     mobxRootState: new MobxRootState(),
 
-    cliQueryController,
-    cliCommandController,
+    articleQueryViewController,
+    articleCommandViewController,
   };
 };

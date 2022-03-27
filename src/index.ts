@@ -8,21 +8,21 @@ const context = createApplicationContext();
 
 const applicationByStateManager = new ApplicationByStateManager(
   context.stateManager,
-  context.cliQueryController,
-  context.cliCommandController
+  context.articleQueryViewController,
+  context.articleCommandViewController
 );
 applicationByStateManager.run();
 
 const applicationByRedux = new ApplicationByRedux(
   context.store,
-  context.cliQueryController,
-  context.cliCommandController
+  context.articleQueryViewController,
+  context.articleCommandViewController
 );
 // applicationByRedux.run();
 
 const applicationByMobx = new ApplicationByMobx(
   context.mobxRootState,
-  context.cliQueryController,
-  context.cliCommandController
+  context.articleQueryViewController,
+  context.articleCommandViewController
 );
 // applicationByMobx.run();
