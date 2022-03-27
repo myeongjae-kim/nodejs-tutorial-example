@@ -1,7 +1,8 @@
-import { Container } from "inversify";
+import { Container, decorate, inject, injectable } from "inversify";
 import { ApplicationByStateManager } from "./ApplicationByStateManager";
 import { createApplicationContext } from "./applicationContext";
 import { Constants } from "./Constants";
+import "reflect-metadata";
 
 const context = createApplicationContext();
 
@@ -12,6 +13,25 @@ const applicationByStateManager = new ApplicationByStateManager(
   context.articleCommandViewController
 );
 */
+
+const decorateClasses = () => {
+  decorate(injectable(), ApplicationByStateManager);
+  decorate(
+    inject(Constants.SERVICE_IDS.StateManager),
+    ApplicationByStateManager,
+    0
+  );
+  decorate(
+    inject(Constants.SERVICE_IDS.ArticleQueryViewController),
+    ApplicationByStateManager,
+    1
+  );
+  decorate(
+    inject(Constants.SERVICE_IDS.ArticleCommandViewController),
+    ApplicationByStateManager,
+    2
+  );
+};
 
 const bind = (container: Container) => {
   container
@@ -27,6 +47,9 @@ const bind = (container: Container) => {
     .bind(Constants.SERVICE_IDS.ApplicationByStateManager)
     .to(ApplicationByStateManager);
 };
+
+// initialize classes with decorators
+decorateClasses();
 
 // create IoC Container and bind Constants.SERVICE_IDS to instances or classes
 const container = new Container();
