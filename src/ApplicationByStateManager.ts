@@ -1,18 +1,11 @@
 import { ArticleCommandViewController } from "./article/view/cli/ArticleCommandViewController";
 import { ArticleQueryViewController } from "./article/view/cli/ArticleQueryViewController";
 import { StateManager } from "./article/view/cli/state-modules/vanila/StateManager";
-import "reflect-metadata";
-import { inject, injectable } from "inversify";
-import { Constants } from "./Constants";
 
-@injectable()
 export class ApplicationByStateManager {
   constructor(
-    @inject(Constants.SERVICE_IDS.StateManager)
     private readonly stateManager: StateManager,
-    @inject(Constants.SERVICE_IDS.ArticleQueryViewController)
     private readonly cliQueryController: ArticleQueryViewController,
-    @inject(Constants.SERVICE_IDS.ArticleCommandViewController)
     private readonly cliCommandController: ArticleCommandViewController
   ) {}
 
