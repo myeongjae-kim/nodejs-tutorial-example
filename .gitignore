@@ -66,3 +66,12 @@ common/autoinstallers/*/.npmrc
 
 # Heft
 .heft
+
+#Custom
+*.js
+dist
+
+!jest.config.js
+!.eslintrc.js
+
+dependencies.svg

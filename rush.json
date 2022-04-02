@@ -392,6 +392,10 @@
     {
       "packageName": "app-board-cli",
       "projectFolder": "app/board-cli"
+    },
+    {
+      "packageName": "board-domain",
+      "projectFolder": "domain/board-domain"
     }
     // {
     //   /**
