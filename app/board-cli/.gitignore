@@ -1,0 +1,11 @@
+.idea
+node_modules
+*.js
+dist
+coverage
+.DS_Store
+
+!jest.config.js
+!.eslintrc.js
+
+dependencies.svg
