@@ -1,5 +1,5 @@
 {
-  "name": "nodejs-tutorial-example",
+  "name": "app-board-cli",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
