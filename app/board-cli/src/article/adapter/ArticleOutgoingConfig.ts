@@ -1,7 +1,7 @@
 import { Container, decorate, inject, injectable } from "inversify";
 import { DiConfig } from "../../common/adapter/DiConfig";
-import { ArticleLoadPort } from "../application/port/outgoing/ArticleLoadPort";
-import { ArticleSavePort } from "../application/port/outgoing/ArticleSavePort";
+import { ArticleLoadPort } from "board-domain/dist/article/port/outgoing/ArticleLoadPort";
+import { ArticleSavePort } from "board-domain/dist/article/port/outgoing/ArticleSavePort";
 import { ArticleInMemoryRepository } from "./outgoing/persistence/ArticleInMemoryRepository";
 import { ArticlePersistenceAdapter } from "./outgoing/persistence/ArticlePersistenceAdapter";
 

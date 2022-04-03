@@ -1,4 +1,4 @@
-import { ArticleImpl } from "../../../domain/ArticleImpl";
+import { ArticleImpl } from "board-domain/dist/article/model/ArticleImpl";
 
 export class ArticleInMemoryRepository {
   constructor(private records: Record<number, ArticleImpl> = {}) {}

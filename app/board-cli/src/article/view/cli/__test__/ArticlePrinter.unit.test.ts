@@ -1,6 +1,6 @@
 import { Constants } from "../../../../Constants";
-import { ArticleResponse } from "../../../application/port/incoming/ArticleResponse";
-import { ArticleResponseFixture } from "../../../application/port/incoming/__test__/ArticleResponseFixture";
+import { ArticleResponse } from "board-domain/dist/article/port/incoming/ArticleResponse";
+import { ArticleResponseFixture } from "board-domain/dist/article/port/incoming/__test__/ArticleResponseFixture";
 import { ArticlePrinter } from "../ArticlePrinter";
 
 describe("ArticlePrinterTest", () => {

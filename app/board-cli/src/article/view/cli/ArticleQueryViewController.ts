@@ -1,6 +1,6 @@
 import { Constants } from "../../../Constants";
-import { ArticleGetUseCase } from "../../application/port/incoming/ArticleGetUseCase";
-import { ArticleListUseCase } from "../../application/port/incoming/ArticleListUseCase";
+import { ArticleGetUseCase } from "board-domain/dist/article/port/incoming/ArticleGetUseCase";
+import { ArticleListUseCase } from "board-domain/dist/article/port/incoming/ArticleListUseCase";
 import { CliInOut } from "../../../common/view/cli/CliInOut";
 import { MenuPrinter } from "./MenuPrinter";
 

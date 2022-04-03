@@ -1,7 +1,7 @@
 import { ArticleIncomingConfig } from "../article/adapter/ArticleIncomingConfig";
-import { ArticleCreateUseCase } from "../article/application/port/incoming/ArticleCreateUseCase";
-import { ArticleGetUseCase } from "../article/application/port/incoming/ArticleGetUseCase";
-import { ArticleListUseCase } from "../article/application/port/incoming/ArticleListUseCase";
+import { ArticleCreateUseCase } from "board-domain/dist/article/port/incoming/ArticleCreateUseCase";
+import { ArticleGetUseCase } from "board-domain/dist/article/port/incoming/ArticleGetUseCase";
+import { ArticleListUseCase } from "board-domain/dist/article/port/incoming/ArticleListUseCase";
 import { initializeContainer } from "../initialize-container";
 
 describe("containerIntegrationTest", () => {

@@ -1,10 +1,10 @@
 import { Container, decorate, inject, injectable } from "inversify";
 import { DiConfig } from "../../common/adapter/DiConfig";
-import { ArticleCommandService } from "../application/ArticleCommandService";
-import { ArticleQueryService } from "../application/ArticleQueryService";
-import { ArticleCreateUseCase } from "../application/port/incoming/ArticleCreateUseCase";
-import { ArticleGetUseCase } from "../application/port/incoming/ArticleGetUseCase";
-import { ArticleListUseCase } from "../application/port/incoming/ArticleListUseCase";
+import { ArticleCommandService } from "board-domain/dist/article/ArticleCommandService";
+import { ArticleQueryService } from "board-domain/dist/article/ArticleQueryService";
+import { ArticleCreateUseCase } from "board-domain/dist/article/port/incoming/ArticleCreateUseCase";
+import { ArticleGetUseCase } from "board-domain/dist/article/port/incoming/ArticleGetUseCase";
+import { ArticleListUseCase } from "board-domain/dist/article/port/incoming/ArticleListUseCase";
 import { ArticleOutgoingConfig } from "./ArticleOutgoingConfig";
 
 export class ArticleIncomingConfig implements DiConfig {

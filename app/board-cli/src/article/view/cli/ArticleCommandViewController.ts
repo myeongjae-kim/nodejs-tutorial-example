@@ -1,4 +1,4 @@
-import { ArticleCreateUseCase } from "../../application/port/incoming/ArticleCreateUseCase";
+import { ArticleCreateUseCase } from "board-domain/dist/article/port/incoming/ArticleCreateUseCase";
 import { CliInOut } from "../../../common/view/cli/CliInOut";
 import { MenuPrinter } from "./MenuPrinter";
 

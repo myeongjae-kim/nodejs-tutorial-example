@@ -6,7 +6,7 @@ import {
   verify,
   when,
 } from "@johanblumenberg/ts-mockito";
-import { ArticleCreateUseCase } from "../../../application/port/incoming/ArticleCreateUseCase";
+import { ArticleCreateUseCase } from "board-domain/dist/article/port/incoming/ArticleCreateUseCase";
 import { ArticleCommandViewController } from "../ArticleCommandViewController";
 import { CliInOut } from "../../../../common/view/cli/CliInOut";
 import { MenuPrinter } from "../MenuPrinter";

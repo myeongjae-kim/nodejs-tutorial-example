@@ -1,6 +1,6 @@
-import { ArticleImpl } from "../../../../domain/ArticleImpl";
-import { ArticleFixture } from "../../../../domain/__test__/ArticleFixture";
 import { ArticleInMemoryRepository } from "../ArticleInMemoryRepository";
+import { ArticleImpl } from "board-domain/dist/article/model/ArticleImpl";
+import { ArticleFixture } from "board-domain/dist/article/model/__test__/ArticleFixture";
 
 describe("ArticleInMemoryRepositoryTest", () => {
   let records: Record<string, ArticleImpl>;

@@ -1,5 +1,5 @@
 import { Constants } from "../../../Constants";
-import { ArticleResponse } from "../../application/port/incoming/ArticleResponse";
+import { ArticleResponse } from "board-domain/dist/article/port/incoming/ArticleResponse";
 
 export class ArticlePrinter {
   public printForList = (...response: ArticleResponse[]): string =>

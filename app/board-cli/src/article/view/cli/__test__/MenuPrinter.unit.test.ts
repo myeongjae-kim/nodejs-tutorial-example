@@ -1,4 +1,4 @@
-import { ArticleResponseFixture } from "../../../application/port/incoming/__test__/ArticleResponseFixture";
+import { ArticleResponseFixture } from "board-domain/dist/article/port/incoming/__test__/ArticleResponseFixture";
 import { ArticlePrinter } from "../ArticlePrinter";
 import { MenuPrinter } from "../MenuPrinter";
 

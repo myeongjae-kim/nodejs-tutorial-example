@@ -1,7 +1,7 @@
 import { ArticleInMemoryRepository } from "../ArticleInMemoryRepository";
 import { ArticlePersistenceAdapter } from "../ArticlePersistenceAdapter";
 import { mock, when, verify, instance } from "@johanblumenberg/ts-mockito";
-import { ArticleFixture } from "../../../../domain/__test__/ArticleFixture";
+import { ArticleFixture } from "board-domain/dist/article/model/__test__/ArticleFixture";
 
 describe("ArticlePersistenceAdapterTest", () => {
   let mockedRepository: ArticleInMemoryRepository;

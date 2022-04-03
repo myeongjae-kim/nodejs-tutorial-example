@@ -1,7 +1,7 @@
-import { ArticleLoadPort } from "../../../application/port/outgoing/ArticleLoadPort";
-import { ArticleSavePort } from "../../../application/port/outgoing/ArticleSavePort";
-import { ArticleImpl } from "../../../domain/ArticleImpl";
 import { ArticleInMemoryRepository } from "./ArticleInMemoryRepository";
+import { ArticleLoadPort } from "board-domain/dist/article/port/outgoing/ArticleLoadPort";
+import { ArticleSavePort } from "board-domain/dist/article/port/outgoing/ArticleSavePort";
+import { ArticleImpl } from "board-domain/dist/article/model/ArticleImpl";
 
 export class ArticlePersistenceAdapter
   implements ArticleLoadPort, ArticleSavePort
