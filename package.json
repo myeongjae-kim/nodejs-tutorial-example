@@ -30,9 +30,7 @@
     "url": "https://github.com/myeongjae-kim/nodejs-tutorial-example/issues"
   },
   "homepage": "https://github.com/myeongjae-kim/nodejs-tutorial-example#readme",
-  "dependencies": {
-    "node": "^17.5.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@johanblumenberg/ts-mockito": "^1.0.32",
     "@types/jest": "^27.4.1",
