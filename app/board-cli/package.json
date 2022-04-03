@@ -31,6 +31,9 @@
     "url": "https://github.com/myeongjae-kim/nodejs-tutorial-example/issues"
   },
   "homepage": "https://github.com/myeongjae-kim/nodejs-tutorial-example#readme",
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "@reduxjs/toolkit": "1.8.0",
     "inversify": "6.0.1",
