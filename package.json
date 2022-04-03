@@ -33,8 +33,7 @@
   "homepage": "https://github.com/myeongjae-kim/nodejs-tutorial-example#readme",
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.0",
-    "mobx": "^6.4.2",
-    "node": "^17.5.0"
+    "mobx": "^6.4.2"
   },
   "devDependencies": {
     "@johanblumenberg/ts-mockito": "^1.0.32",
