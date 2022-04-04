@@ -15,6 +15,7 @@ importers:
       '@typescript-eslint/eslint-plugin': ^5.14.0
       '@typescript-eslint/parser': ^5.14.0
       board-domain: workspace:*
+      core-rig: workspace:*
       dependency-cruiser: ^11.4.1
       eslint: ^8.11.0
       eslint-config-prettier: ^8.5.0
@@ -30,6 +31,7 @@ importers:
     dependencies:
       '@reduxjs/toolkit': 1.8.0
       board-domain: link:../../domain/board-domain
+      core-rig: link:../../rig/core-rig
       inversify: 6.0.1
       mobx: 6.4.2
       reflect-metadata: 0.1.13

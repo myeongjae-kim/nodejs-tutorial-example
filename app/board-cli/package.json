@@ -39,7 +39,8 @@
     "inversify": "6.0.1",
     "mobx": "6.4.2",
     "reflect-metadata": "0.1.13",
-    "board-domain": "workspace:*"
+    "board-domain": "workspace:*",
+    "core-rig": "workspace:*"
   },
   "devDependencies": {
     "@johanblumenberg/ts-mockito": "^1.0.32",

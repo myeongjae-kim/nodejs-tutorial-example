@@ -1,6 +1,7 @@
 {
   "extends": "./node_modules/core-rig/profiles/default/tsconfig.json",
   "compilerOptions": {
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "rootDir": "./src"
   }
 }
