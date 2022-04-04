@@ -390,6 +390,10 @@
     {
       "packageName": "board-domain",
       "projectFolder": "domain/board-domain"
+    },
+    {
+      "packageName": "core-rig",
+      "projectFolder": "rig/core-rig"
     }
     // {
     //   /**
