@@ -75,3 +75,4 @@ dist
 !.eslintrc.js
 
 dependencies.svg
+temp/

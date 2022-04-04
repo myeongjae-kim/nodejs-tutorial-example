@@ -4,5 +4,9 @@
   "description": "",
   "main": "index.js",
   "author": "",
+  "scripts": {
+    "build": "",
+    "clean": ""
+  },
   "license": "ISC"
 }
