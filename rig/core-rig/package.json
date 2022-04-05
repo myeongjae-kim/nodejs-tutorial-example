@@ -6,7 +6,8 @@
   "author": "",
   "scripts": {
     "build": "",
-    "clean": ""
+    "clean": "",
+    "test": ""
   },
   "license": "ISC",
   "devDependencies": {
@@ -14,6 +15,9 @@
     "@typescript-eslint/parser": "^5.18.0",
     "eslint": "^8.12.0",
     "typescript": "^4.6.3",
-    "eslint-config-prettier": "^8.5.0"
+    "eslint-config-prettier": "^8.5.0",
+    "@rushstack/heft": "^0.44.5",
+    "@rushstack/heft-jest-plugin": "^0.2.6",
+    "@types/heft-jest": "1.0.2"
   }
 }

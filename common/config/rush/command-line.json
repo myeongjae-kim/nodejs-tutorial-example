@@ -28,6 +28,13 @@
 
       // This will invoke common/autoinstallers/rush-prettier/node_modules/.bin/pretty-quick
       "shellCommand": "pretty-quick --staged"
+    },
+    {
+      "commandKind": "bulk",
+      "name": "test",
+      "summary": "Run tests of each project.",
+      "description": "Run tests of each project.",
+      "enableParallelism": true
     }
     // {
     //   /**
