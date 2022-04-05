@@ -1,10 +1,7 @@
 module.exports = {
   root: true,
-  parser: "@typescript-eslint/parser",
-  plugins: ["@typescript-eslint"],
   extends: [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "prettier",
+    "@rushstack/eslint-config/profile/node",
+    "@rushstack/eslint-config/mixins/friendly-locals",
   ],
 };

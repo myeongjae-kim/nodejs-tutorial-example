@@ -14,12 +14,9 @@
   "license": "ISC",
   "devDependencies": {
     "@johanblumenberg/ts-mockito": "^1.0.32",
-    "@types/jest": "^27.4.1",
-    "@types/node": "^17.0.23",
+    "@types/node": "17.0.23",
     "eslint": "^8.12.0",
     "jest": "^27.5.1",
-    "prettier": "^2.6.1",
-    "ts-jest": "^27.1.4",
     "ts-node": "^10.7.0",
     "typescript": "^4.6.3",
     "@rushstack/eslint-config": "2.5.2",

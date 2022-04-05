@@ -23,27 +23,6 @@
      * When someone asks for "^1.0.0" make sure they get "1.2.3" when working in this repo,
      * instead of the latest version.
      */
-    // dependencies
-    "@reduxjs/toolkit": "1.8.0",
-    "inversify": "6.0.1",
-    "mobx": "6.4.2",
-    "node": "17.5.0",
-    "reflect-metadata": "0.1.13",
-
-    // devDependencies
-    "@johanblumenberg/ts-mockito": "^1.0.32",
-    "@types/jest": "^27.4.1",
-    "@typescript-eslint/eslint-plugin": "^5.14.0",
-    "@typescript-eslint/parser": "^5.14.0",
-    "dependency-cruiser": "^11.4.1",
-    "eslint": "^8.11.0",
-    "eslint-config-prettier": "^8.5.0",
-    "jest": "^27.5.1",
-    "nodemon": "^2.0.15",
-    "prettier": "2.5.1",
-    "ts-jest": "^27.1.3",
-    "ts-node": "^10.7.0",
-    "typescript": "^4.6.2"
   },
 
   /**
