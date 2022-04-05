@@ -8,4 +8,4 @@ const applicationByStateManager = container.get<ApplicationByStateManager>(
   Constants.SERVICE_IDS.ApplicationByStateManager
 );
 
-applicationByStateManager.run();
+void applicationByStateManager.run();

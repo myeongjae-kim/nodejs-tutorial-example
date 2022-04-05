@@ -31,7 +31,7 @@ export class ApplicationByRedux {
   private homeListener = () => {
     switch (this.store.getState().input) {
       case "":
-        this.articleQueryViewController
+        void this.articleQueryViewController
           .renderHome()
           .then((answer) =>
             this.store.dispatch(reduxModule.setInput({ input: answer }))
@@ -56,7 +56,7 @@ export class ApplicationByRedux {
 
     switch (input) {
       case "":
-        this.articleQueryViewController
+        void this.articleQueryViewController
           .renderArticleList()
           .then((answer) =>
             this.store.dispatch(reduxModule.setInput({ input: answer }))
@@ -66,7 +66,7 @@ export class ApplicationByRedux {
         this.store.dispatch(reduxModule.setView({ view: "HOME" }));
         break;
       default:
-        this.articleQueryViewController
+        void this.articleQueryViewController
           .renderArticleDetail(parseInt(input))
           .then(() => {
             this.store.dispatch(reduxModule.setView({ view: "ARTICLE_LIST" }));
@@ -76,7 +76,7 @@ export class ApplicationByRedux {
   };
 
   private articleFormListener = () => {
-    this.articleCommandViewController.rednerArticleForm().then(() => {
+    void this.articleCommandViewController.rednerArticleForm().then(() => {
       this.store.dispatch(reduxModule.setView({ view: "HOME" }));
     });
   };

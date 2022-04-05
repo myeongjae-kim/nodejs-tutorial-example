@@ -36,7 +36,7 @@ export class ApplicationByMobx {
   private homeListener = () => {
     switch (this.mobxRootState.input) {
       case "":
-        this.articleQueryViewController
+        void this.articleQueryViewController
           .renderHome()
           .then((answer) => this.mobxRootState.setInput(answer));
         break;
@@ -59,7 +59,7 @@ export class ApplicationByMobx {
 
     switch (input) {
       case "":
-        this.articleQueryViewController
+        void this.articleQueryViewController
           .renderArticleList()
           .then((answer) => this.mobxRootState.setInput(answer));
         break;
@@ -67,7 +67,7 @@ export class ApplicationByMobx {
         this.mobxRootState.setView("HOME");
         break;
       default:
-        this.articleQueryViewController
+        void this.articleQueryViewController
           .renderArticleDetail(parseInt(input))
           .then(() => this.mobxRootState.setView("ARTICLE_LIST"));
         break;
@@ -75,7 +75,7 @@ export class ApplicationByMobx {
   };
 
   private articleFormListener = () => {
-    this.articleCommandViewController.rednerArticleForm().then(() => {
+    void this.articleCommandViewController.rednerArticleForm().then(() => {
       this.mobxRootState.setView("HOME");
     });
   };
