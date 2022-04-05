@@ -6,8 +6,7 @@
   "author": "",
   "scripts": {
     "build": "",
-    "clean": "",
-    "test": ""
+    "clean": ""
   },
   "license": "ISC",
   "devDependencies": {

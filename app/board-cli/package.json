@@ -5,9 +5,8 @@
   "main": "dist/index.js",
   "scripts": {
     "dev": "nodemon",
-    "build": "heft build --clean",
+    "build": "heft test --clean",
     "start": "node .",
-    "test": "heft test --clean",
     "report": "jest unit --collect-coverage && open coverage/lcov-report/index.html",
     "lint": "eslint . --ext .ts,.tsx",
     "prettier": "prettier --write .",
