@@ -4,7 +4,7 @@ import { ArticleGetUseCase } from "board-domain/dist/article/port/incoming/Artic
 import { ArticleListUseCase } from "board-domain/dist/article/port/incoming/ArticleListUseCase";
 import { initializeContainer } from "../initialize-container";
 
-describe("containerIntegrationTest", () => {
+xdescribe("containerIntegrationTest", () => {
   test("articleUseCases", () => {
     const container = initializeContainer();
     container
