@@ -4,5 +4,7 @@
   "editor.codeActionsOnSave": {
     "source.fixAll": true,
     "source.fixAll.eslint": true
-  }
+  },
+  "eslint.packageManager": "pnpm",
+  "eslint.alwaysShowStatus": true
 }
