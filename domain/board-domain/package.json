@@ -5,11 +5,11 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "heft build --clean",
-    "test": "jest",
+    "test": "heft test --clean",
     "report": "jest unit --collect-coverage && open coverage/lcov-report/index.html",
     "lint": "eslint . --ext .ts,.tsx",
     "prettier": "prettier --write .",
-    "clean": "rm -rf dist/*"
+    "clean": "rm -rf dist"
   },
   "author": "",
   "license": "ISC",

@@ -7,11 +7,11 @@
     "dev": "nodemon",
     "build": "heft build --clean",
     "start": "node .",
-    "test": "jest",
+    "test": "heft test --clean",
     "report": "jest unit --collect-coverage && open coverage/lcov-report/index.html",
     "lint": "eslint . --ext .ts,.tsx",
     "prettier": "prettier --write .",
-    "clean": "rm -rf dist/*",
+    "clean": "rm -rf dist",
     "graph": "depcruise --exclude \"^node_modules\" --ts-pre-compilation-deps --output-type dot src/index.ts | dot -T svg -o dependencies.svg"
   },
   "nodemonConfig": {

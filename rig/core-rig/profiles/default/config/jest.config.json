@@ -1,0 +1,5 @@
+{
+  "extends": "@rushstack/heft-jest-plugin/includes/jest-shared.config.json",
+  "collectCoverageFrom": ["src/**/*.{ts,tsx}", "!src/**/__test__/**"],
+  "testPathIgnorePatterns": ["/node_modules/", "/dist/"]
+}
